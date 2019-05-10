@@ -7,7 +7,7 @@
         <property name="databaseName" value="webapplicationsktv17"/>
         <property name="User" value="webapplicationsktv17"/>
         <property name="Password" value="12345"/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/webapplicationsktv17?zeroDateTimeBehavior=convertToNull"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/webapplicationsktv17?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/webapplicationsktv17" object-type="user" pool-name="mysql_webapplicationsktv17_webapplicationsktv17Pool"/>
