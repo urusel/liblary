@@ -23,13 +23,13 @@ public class Reader implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-private String name;
-private String surname;
-private String phone;
+    private String name;
+    private String surname;
+    private String phone;
 
-public Reader(){
-    
-}
+    public Reader(){
+
+    }
 
     public Reader(String name, String surname, String phone) {
         this.name = name;

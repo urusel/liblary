@@ -7,8 +7,8 @@ package controller;
 
 
 import entity.Book;
+import entity.Reader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import session.BookFacade;
-
+import session.ReaderFacade;
 /**
  *
  * @author user2
@@ -26,10 +26,15 @@ import session.BookFacade;
     "/showAddBook",
     "/createBook",
     "/listBooks",
-    
+     "/createReader",
+    "/showAddReader",
+    "/listReaders",
 })
 public class WebController extends HttpServlet {
-@EJB BookFacade bookFacade;
+@EJB 
+BookFacade bookFacade;
+@EJB
+ReaderFacade readerFacade;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,8 +51,7 @@ public class WebController extends HttpServlet {
         String path = request.getServletPath();
         switch (path) {
             case "/showAddBook":
-                request.getRequestDispatcher("/showAddBook.jsp")
-                        .forward(request, response);
+                request.getRequestDispatcher("/showAddBook.jsp").forward(request, response);
                 break;
             case "/createBook":
                 String name = request.getParameter("name");
@@ -57,9 +61,7 @@ public class WebController extends HttpServlet {
                 String quantity = request.getParameter("quantity");
                 Book book = new Book(name, author, isbn, new Integer(publishedYear), new Integer(quantity), new Integer(quantity));
                 bookFacade.create(book);
-                request.getRequestDispatcher("/index.jsp")
-                        .forward(request, response);
-                
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
                 break;
             case "/listBooks" :
                  List<Book> listBooks=bookFacade.findAll();
@@ -67,10 +69,24 @@ public class WebController extends HttpServlet {
                  request.getRequestDispatcher("/listBooks.jsp")
                         .forward(request, response);
                  break;
-
+            case "/createReader":
+                name = request.getParameter("name");
+                String surname = request.getParameter("surname");
+                String phone = request.getParameter("phone");
+                Reader reader = new Reader(name, surname, phone);
+                readerFacade.create(reader);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                break;
+            case "/showAddReader":
+                request.getRequestDispatcher("/showAddReader.jsp").forward(request, response);
+                break;
+            case "/listReaders":
+                List<Reader> listReaders = readerFacade.findAll();
+                request.setAttribute("listReaders", listReaders);
+                request.getRequestDispatcher("/listReaders.jsp").forward(request, response);
+                break;
         }
-
-    }
+  }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -112,3 +128,7 @@ public class WebController extends HttpServlet {
     }// </editor-fold>
 
 }
+
+    
+    
+   

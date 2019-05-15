@@ -1,17 +1,21 @@
 <%-- 
-    Document   : listReaders
-    Created on : May 10, 2019, 7:16:57 PM
-    Author     : user
+    Document   : listReader
+    Created on : May 10, 2019, 6:10:04 PM
+    Author     : User
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Список читателей</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Наши читатели</h1>
+        <c:forEach var="reader" items="${listReaders}">
+         <p>${reader.name} ${reader.surname} ${reader.phone}</p>   
+        </c:forEach>
     </body>
 </html>

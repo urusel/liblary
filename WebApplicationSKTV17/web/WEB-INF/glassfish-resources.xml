@@ -6,7 +6,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="webapplicationsktv17"/>
         <property name="User" value="webapplicationsktv17"/>
-        <property name="Password" value="12345"/>
+        <property name="Password" value="webapplicationsktv17"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/webapplicationsktv17?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
